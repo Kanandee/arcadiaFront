@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import GameService from "../../_services/GameService";
 import Game from "../../components/Game/Game";
-import "./GameList.scss";
+import "./GameList.scss"
 
 export default function GameList() {
    const [games, setGames] = useState([]);
@@ -17,9 +17,9 @@ export default function GameList() {
    };
 
    return (
-      <div className="movie-list">
-         <div className="container pt-5 pb-5">
-            <h1 className="h1  mb-5 ">Juegos disponibles</h1>
+      <div className="game-list">
+         <div className="container-fluid pt-5 pb-5 justify-content-center d-flex flex-wrap">
+            <h1 className="h3 mb-5">¡No te pierdas las ultimas novedades!</h1>
             <div className="d-flex flex-wrap justify-content-center gap-5 mb-5">
                {games.length > 0 &&
                   games.map((game) => <Game key={game._id} game={game} />)}

@@ -5,26 +5,27 @@ import "./Game.scss"
 function Game({ game }) {
    return (
       <div className="">
-         <div
-            className="card  text-start game-card"
-            style={{ width: "13rem" }}
-         >
-            <div className="poster-container">
-               <img
-                  src={game.cover}
-                  className="card-img-top img-fluid round"
-                  alt="..."
-               />
-            </div>
+      <div
+         className="card  text-start game-card"
+         style={{ width: "13rem" }}
+         onClick={() => getMovieDetails(movie)}
+      >
+         <div className="poster-container">
+            <img
+               src={game.cover}
+               className="card-img-top img-fluid round"
+               alt="..."
+            />
+         </div>
 
-            <div className="card-body">
-               <h5 className="card-title mb-2 mt-2 fs-6 fw-bold">
-                  {game.name}
-               </h5>
-               <div>Valoracion: {game.rating}</div>
-            </div>
+         <div className="card-body">
+            <h5 className="card-title mb-2 mt-2 fs-6 fw-bold">
+               {game.name}
+            </h5>
+            <div className="vote-average">{game.rating}</div>
          </div>
       </div>
+   </div>
    );
 }
 

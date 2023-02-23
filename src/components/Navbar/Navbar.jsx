@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import "./Navbar.scss"
 
 export default function Navbar() {
 
@@ -19,7 +20,7 @@ export default function Navbar() {
             <div className="container">
                <a className="navbar-brand" href="/">
                   <img
-                     src=""
+                     src="../../src/assets/videojuego.png"
                      alt=""
                      width="40"
                      height="40"
@@ -44,7 +45,7 @@ export default function Navbar() {
                   <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                      <li className="nav-item">
                         <NavLink to="/games" className={setNavLinkClassName}>
-                           Juegos
+                           Tienda
                         </NavLink>
                      </li>
 
