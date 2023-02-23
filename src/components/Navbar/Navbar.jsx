@@ -43,7 +43,7 @@ export default function Navbar() {
                   className="collapse navbar-collapse"
                   id="navbarSupportedContent"
                >
-                   <ul className="navbar-nav navbar-right  me-auto mb-2 mb-lg-0"></ul>
+                  <ul className="navbar-nav navbar-right  me-auto mb-2 mb-lg-0"></ul>
                   <form className="d-flex">
                      <input
                         className="form-control me-2"
@@ -55,12 +55,22 @@ export default function Navbar() {
                         Buscar
                      </button>
                   </form>
-                  
+
                   <ul className="navbar-nav navbar-right  me-auto mb-2 mb-lg-0"></ul>
                   <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                      <li className="nav-item">
                         <NavLink to="/games" className={setNavLinkClassName}>
                            Tienda
+                        </NavLink>
+                     </li>
+                     <li className="nav-item">
+                        <NavLink to="/login" className={setNavLinkClassName}>
+                           Iniciar sesión
+                        </NavLink>
+                     </li>
+                     <li className="nav-item">
+                        <NavLink to="/register" className={setNavLinkClassName}>
+                           Registro
                         </NavLink>
                      </li>
                   </ul>
