@@ -8,4 +8,10 @@ GameService.getAllGames = async (page = 1) => {
    return await axios.get(apiUrl);
 };
 
+GameService.getSingleGame = async (id) => {
+   const apiUrl = `${environment.BASE_API_URL}/games/${id}`;
+
+   return await axios.get(apiUrl);
+};
+
 export default GameService;
