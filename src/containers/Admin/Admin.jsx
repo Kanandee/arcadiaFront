@@ -8,7 +8,7 @@ export default function Admin() {
 
    useEffect(() => {
       getAllUsers();
-   }, []);
+   }, [users]);
 
    const getAllUsers = async () => {
       try {

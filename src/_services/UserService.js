@@ -24,4 +24,14 @@ UserService.getUserInfo = async (id) => {
    return await axios.get(apiUrl, config);
 };
 
+UserService.deleteUser = async (id) => {
+   const apiUrl = environment.BASE_API_URL + "/users/" + id + "/delete";
+   const token = TokenStorageService.getToken();
+   const config = {
+      headers: { Authorization: `Bearer ${token}` },
+   };
+
+   return await axios.delete(apiUrl, config);
+};
+
 export default UserService;
