@@ -6,6 +6,7 @@ import GameList from "./containers/GameList/GameList";
 import GameDetail from "./containers/GameDetail/GameDetail";
 import Login from "./containers/Login/Login";
 import Register from "./containers/Register/Register";
+import { Navigate } from "react-router-dom";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/games/:id" element={<GameDetail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/logout" element={<Navigate to="/login" />} />
         </Routes>
       </BrowserRouter>
     </div>

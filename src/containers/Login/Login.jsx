@@ -3,10 +3,15 @@ import { useNavigate } from "react-router-dom";
 import AuthService from "../../_services/AuthService";
 import TokenStorageService from "../../_services/TokenStorageService";
 import { validateLoginFormValues } from "../../_helpers/form-utilities";
+import { useDispatch } from "react-redux";
+import { saveLoginInfo } from "../../redux/actionsRX";
+import { useSelector } from "react-redux";
 
 import "./Login.scss";
 
 export default function Login() {
+
+   const dispatch = useDispatch();
 
    const initialValues = {
       email: "",
@@ -36,8 +41,9 @@ export default function Login() {
    const loginAuth = async (credentials) => {
       try {
          const res = await AuthService.login(credentials);
-         TokenStorageService.saveToken(res.data.token, res.data.user.id, res.data.userrole);
-         switch (res.data.role) {
+         TokenStorageService.saveToken(res.data.token, res.data.user.id, res.data.user.role);
+         dispatch(saveLoginInfo(res.data.user));
+         switch (res.data.user.role) {
             case "user":
                navigate("/games");
                break;

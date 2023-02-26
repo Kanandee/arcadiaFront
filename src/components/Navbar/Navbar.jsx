@@ -1,8 +1,16 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { clearLoginInfo } from "../../redux/actionsRX";
+import TokenStorageService from "../../_services/TokenStorageService";
 import "./Navbar.scss"
 
 export default function Navbar() {
+
+   const dispatch = useDispatch();
+   const navigate = useNavigate();
+   const isLoggedIn = useSelector((state) => state.lib.isLoggedIn);
+   const user = useSelector((state) => state.lib.userInfo);
 
    let activeClassName = "activeNav";
    const setNavLinkClassName = ({ isActive }) => {
@@ -14,11 +22,44 @@ export default function Navbar() {
       return className;
    };
 
+   const logout = () => {
+      TokenStorageService.logOut();
+      dispatch(clearLoginInfo());
+      navigate('/');
+   };
+
+   const showUserInfo = () => {
+      if (isLoggedIn) {
+         return (<li className="nav-item">
+            <NavLink className={setNavLinkClassName}>
+               {user.name}
+            </NavLink>
+         </li>
+         );
+      }
+   }
+
+   const showLoginButtons = () => {
+      if (isLoggedIn) {
+         return (<li className="nav-item">
+            <NavLink to="/logout" onClick={logout} className={setNavLinkClassName}>
+               Cerrar sesión
+            </NavLink>
+         </li>);
+      } else {
+         return (<li className="nav-item">
+            <NavLink to="/login" className={setNavLinkClassName}>
+               Iniciar sesión
+            </NavLink>
+         </li>);
+      }
+   }
+
    return (
       <div>
          <nav className="navbar navbar-expand-lg navbar-dark bg-dark fs-6">
             <div className="container">
-               <a className="navbar-brand" href="/">
+               <a className="navbar-brand" disabled>
                   <img
                      src="../../src/assets/videojuego.png"
                      alt=""
@@ -51,23 +92,19 @@ export default function Navbar() {
                         placeholder="Nombre del juego..."
                         aria-label="Search"
                      />
-                     <button className="btn btn-outline-light" type="submit">
+                     <button className="btn btn-outline-light" type="submit" disabled>
                         Buscar
                      </button>
                   </form>
-
                   <ul className="navbar-nav navbar-right  me-auto mb-2 mb-lg-0"></ul>
                   <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                     {showLoginButtons()}
                      <li className="nav-item">
                         <NavLink to="/games" className={setNavLinkClassName}>
                            Tienda
                         </NavLink>
                      </li>
-                     <li className="nav-item">
-                        <NavLink to="/login" className={setNavLinkClassName}>
-                           Iniciar sesión
-                        </NavLink>
-                     </li>
+
                      <li className="nav-item">
                         <NavLink to="/register" className={setNavLinkClassName}>
                            Registro
@@ -75,6 +112,7 @@ export default function Navbar() {
                      </li>
                   </ul>
                   <ul className="navbar-nav navbar-right  me-auto mb-2 mb-lg-0">
+                     {showUserInfo()}
                      <div>
                      </div>
                   </ul>

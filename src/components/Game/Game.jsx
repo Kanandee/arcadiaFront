@@ -12,7 +12,7 @@ function Game({ game }) {
    return (
       <div className="">
          <div
-            className="card  text-start game-card"
+            className="card text-start game-card"
             style={{ width: "13rem" }}
             onClick={() => getGameDetails(game)}
          >
