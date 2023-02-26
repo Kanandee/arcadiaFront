@@ -4,6 +4,16 @@ import { environment } from "../_environmets/environment";
 
 const UserService = {};
 
+UserService.getAllUsers = async () => {
+   const apiUrl = environment.BASE_API_URL + "/users";
+   const token = TokenStorageService.getToken();
+   const config = {
+      headers: { Authorization: `Bearer ${token}` },
+   };
+
+   return await axios.get(apiUrl, config);
+};
+
 UserService.getUserInfo = async (id) => {
    const apiUrl = environment.BASE_API_URL + "/users/" + id;
    const token = TokenStorageService.getToken();

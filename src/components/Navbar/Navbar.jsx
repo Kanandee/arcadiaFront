@@ -10,6 +10,7 @@ export default function Navbar() {
    const dispatch = useDispatch();
    const navigate = useNavigate();
    const isLoggedIn = useSelector((state) => state.lib.isLoggedIn);
+   const role = TokenStorageService.getRole();
    const user = useSelector((state) => state.lib.userInfo);
 
    let activeClassName = "activeNav";
@@ -56,26 +57,36 @@ export default function Navbar() {
    }
 
    const showRegisterButton = () => {
-      if(!isLoggedIn){
-         return( <li className="nav-item">
-         <NavLink to="/register" className={setNavLinkClassName}>
-            Registro 
-         </NavLink>
-      </li>);
+      if (!isLoggedIn) {
+         return (<li className="nav-item">
+            <NavLink to="/register" className={setNavLinkClassName}>
+               Registro
+            </NavLink>
+         </li>);
+      }
+   }
+
+   const showAdminButton = () => {
+      if (isLoggedIn && role != "user") {
+         return (<li className="nav-item">
+            <NavLink to="/admin" className={setNavLinkClassName}>
+               Panel de Admin
+            </NavLink>
+         </li>);
       }
    }
 
    const showShoppingButton = () => {
-      if(isLoggedIn){
-         return( <li className="nav-item">
-         <NavLink
-            to="/games"
-            className={setNavLinkClassName}
-            end
-         >
-            Tienda
-         </NavLink>
-      </li>);
+      if (isLoggedIn) {
+         return (<li className="nav-item">
+            <NavLink
+               to="/games"
+               className={setNavLinkClassName}
+               end
+            >
+               Tienda
+            </NavLink>
+         </li>);
       }
    }
 
@@ -127,6 +138,7 @@ export default function Navbar() {
                      {showRegisterButton()}
                   </ul>
                   <ul className="navbar-nav navbar-right  me-auto mb-2 mb-lg-0">
+                     {showAdminButton()}
                      {showUserInfo()}
                      <div>
                      </div>
