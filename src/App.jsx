@@ -6,6 +6,7 @@ import GameList from "./containers/GameList/GameList";
 import GameDetail from "./containers/GameDetail/GameDetail";
 import Login from "./containers/Login/Login";
 import Register from "./containers/Register/Register";
+import Profile from "./containers/Profile/Profile";
 import { Navigate } from "react-router-dom";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/games/:id" element={<GameDetail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/logout" element={<Navigate to="/login" />} />
         </Routes>
       </BrowserRouter>

@@ -15,8 +15,11 @@ GameService.getAllGames = async (page = 1) => {
 
 GameService.getSingleGame = async (id) => {
    const apiUrl = `${environment.BASE_API_URL}/games/${id}`;
-
-   return await axios.get(apiUrl);
+   const token = TokenStorageService.getToken();
+   const config = {
+      headers: { Authorization: `Bearer ${token}` },
+   };
+   return await axios.get(apiUrl, config);
 };
 
 export default GameService;

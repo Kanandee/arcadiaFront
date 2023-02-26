@@ -1,16 +1,16 @@
-// .game-card {
-//     border-radius: 10px !important;
-//     overflow: hidden;
-//     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-//     border: none !important;
-//     transition: 1s all;
+.game-card {
+    border-radius: 10px !important;
+    overflow: hidden;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border: none !important;
+    transition: 1s all;
 
-//     &:hover {
-//         box-shadow: rgba(190, 200, 211, 0.704) 0px 1px 1px 0px inset, rgba(5, 49, 82, 0.507) 0px 50px 100px -20px, rgba(16, 33, 221, 0.474) 0px 30px 60px -30px;
-//         cursor: pointer;
-//     }
-// }
+    &:hover {
+        box-shadow: rgba(190, 200, 211, 0.704) 0px 1px 1px 0px inset, rgba(5, 49, 82, 0.507) 0px 50px 100px -20px, rgba(16, 33, 221, 0.474) 0px 30px 60px -30px;
+        cursor: pointer;
+    }
+}
 
-// .poster-container {
-//     position: relative;
-// }
+.poster-container {
+    position: relative;
+}

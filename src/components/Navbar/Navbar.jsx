@@ -31,7 +31,7 @@ export default function Navbar() {
    const showUserInfo = () => {
       if (isLoggedIn) {
          return (<li className="nav-item">
-            <NavLink className={setNavLinkClassName}>
+            <NavLink to="/profile" className={setNavLinkClassName}>
                {user.name}
             </NavLink>
          </li>
