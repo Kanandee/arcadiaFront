@@ -39,7 +39,7 @@ export default function Navbar() {
       }
    }
 
-   const showLoginButtons = () => {
+   const showLoginButton = () => {
       if (isLoggedIn) {
          return (<li className="nav-item">
             <NavLink to="/logout" onClick={logout} className={setNavLinkClassName}>
@@ -52,6 +52,30 @@ export default function Navbar() {
                Iniciar sesión
             </NavLink>
          </li>);
+      }
+   }
+
+   const showRegisterButton = () => {
+      if(!isLoggedIn){
+         return( <li className="nav-item">
+         <NavLink to="/register" className={setNavLinkClassName}>
+            Registro 
+         </NavLink>
+      </li>);
+      }
+   }
+
+   const showShoppingButton = () => {
+      if(isLoggedIn){
+         return( <li className="nav-item">
+         <NavLink
+            to="/games"
+            className={setNavLinkClassName}
+            end
+         >
+            Tienda
+         </NavLink>
+      </li>);
       }
    }
 
@@ -98,18 +122,9 @@ export default function Navbar() {
                   </form>
                   <ul className="navbar-nav navbar-right  me-auto mb-2 mb-lg-0"></ul>
                   <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                     {showLoginButtons()}
-                     <li className="nav-item">
-                        <NavLink to="/games" className={setNavLinkClassName}>
-                           Tienda
-                        </NavLink>
-                     </li>
-
-                     <li className="nav-item">
-                        <NavLink to="/register" className={setNavLinkClassName}>
-                           Registro
-                        </NavLink>
-                     </li>
+                     {showLoginButton()}
+                     {showShoppingButton()}
+                     {showRegisterButton()}
                   </ul>
                   <ul className="navbar-nav navbar-right  me-auto mb-2 mb-lg-0">
                      {showUserInfo()}
