@@ -67,7 +67,7 @@ export default function Profile() {
                         <div class="input-group-prepend">
                            <span class="input-group-text" id="basic-addon1">Targeta bancaria</span>
                         </div>
-                        <input type="text" class="form-control" placeholder={user.payload} aria-label="Username" aria-describedby="basic-addon1" disabled></input>
+                        <input type="text" class="form-control" placeholder={user.paycard} aria-label="Username" aria-describedby="basic-addon1" disabled></input>
                      </div>
                   </div>
                </div>

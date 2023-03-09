@@ -9,6 +9,7 @@ import Register from "./containers/Register/Register";
 import Profile from "./containers/Profile/Profile";
 import Admin from "./containers/Admin/Admin";
 import { Navigate } from "react-router-dom";
+import ShoppingCart from "./containers/ShoppingCart/ShoppingCart";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/logout" element={<Navigate to="/login" />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/cart" element={<ShoppingCart />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -34,4 +34,14 @@ UserService.deleteUser = async (id) => {
    return await axios.delete(apiUrl, config);
 };
 
+UserService.confirmBuy = async (games) => {
+   const apiUrl = environment.BASE_API_URL + "/users/buy/141";
+   const token = TokenStorageService.getToken();
+   const config = {
+      headers: { Authorization: `Bearer ${token}` },
+   };
+
+   return await axios.post(apiUrl, config);
+};
+
 export default UserService;

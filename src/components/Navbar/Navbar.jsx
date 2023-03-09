@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { clearLoginInfo } from "../../redux/actionsRX";
+import { clearGamesCart } from "../../redux/actionsRX";
 import TokenStorageService from "../../_services/TokenStorageService";
 import "./Navbar.scss"
 
@@ -10,6 +11,7 @@ export default function Navbar() {
    const dispatch = useDispatch();
    const navigate = useNavigate();
    const isLoggedIn = useSelector((state) => state.lib.isLoggedIn);
+   const cartItems = useSelector((state) => state.lib.gamesCart);
    const role = TokenStorageService.getRole();
    const user = useSelector((state) => state.lib.userInfo);
 
@@ -26,6 +28,7 @@ export default function Navbar() {
    const logout = () => {
       TokenStorageService.logOut();
       dispatch(clearLoginInfo());
+      dispatch(clearGamesCart());
       navigate('/');
    };
 
@@ -90,6 +93,16 @@ export default function Navbar() {
       }
    }
 
+   const showCartButton = () => {
+      if(isLoggedIn && cartItems.length>0){
+         return( <li className="nav-item">
+         <NavLink to="/cart" className={setNavLinkClassName}>
+         🛒
+         </NavLink>
+      </li>);
+      }
+   }
+
    return (
       <div>
          <nav className="navbar navbar-expand-lg navbar-dark bg-dark fs-6">
@@ -140,8 +153,11 @@ export default function Navbar() {
                   <ul className="navbar-nav navbar-right  me-auto mb-2 mb-lg-0">
                      {showAdminButton()}
                      {showUserInfo()}
-                     <div>
-                     </div>
+                     <div>       
+                     </div>            
+                  </ul>
+                  <ul className="navbar-nav navbar-right  me-auto mb-2 mb-lg-0">
+                  {showCartButton()}
                   </ul>
                </div>
             </div>

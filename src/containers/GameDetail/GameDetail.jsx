@@ -1,15 +1,24 @@
 import React, { useState, useEffect } from "react";
 import GameService from "../../_services/GameService";
 import "./GameDetail.scss";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addGamesCart } from "../../redux/actionsRX";
 
 export default function GameDetail() {
    const [game, setGame] = useState({});
    const { id } = useParams();
+   const dispatch = useDispatch();
+   const navigate = useNavigate();
 
    useEffect(() => {
       getSingleGame();
    }, []);
+
+   const addToCart = (id) => {
+      dispatch(addGamesCart(id));
+      navigate("/cart"); 
+   };
 
    const getSingleGame = async () => {
       try {
@@ -52,7 +61,7 @@ export default function GameDetail() {
                      <h5 className="fw-bold">Descripcion</h5>
                      <p className="fs-5">{game.summary}</p>
                      <button type="submit"
-                        className="btn btn-primary text-white fw-bold">
+                        className="btn btn-primary text-white fw-bold" onClick={() => addToCart(id)}>
                         Comprar
                      </button>
                   </div>

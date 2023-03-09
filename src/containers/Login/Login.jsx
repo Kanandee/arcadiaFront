@@ -53,6 +53,7 @@ export default function Login() {
          }
 
       } catch (error) {
+         alert("Contraseña incorrecta")
          console.log(error);
       }
    };

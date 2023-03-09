@@ -23,8 +23,11 @@ const actionsRX = createSlice({
     },
 
     addGamesCart: (state, action) => {
-      state.gamesCart.push(action.payload);
-      console.log("addGamesCart: " + state.gamesCart)
+      // Not exists in the cart?
+      if(!state.gamesCart.includes(action.payload)){
+        state.gamesCart.push(action.payload);
+        console.log("addGamesCart: " + state.gamesCart)
+      }
     },
 
     removeGameCart: (state, action) => {
