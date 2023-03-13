@@ -8,7 +8,7 @@ export default function Profile() {
    const [user, setUser] = useState([]);
    const [games, setGames] = useState([])
 
-   useEffect(() => { getUserInfo(); }, []);
+   useEffect(() => { getUserInfo(); }, [games]);
 
    const getUserInfo = async () => {
       try {

@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import GameService from "../../_services/GameService";
-import UserService from "../../_services/UserService";
-import "./UserGame.scss"
+import "./AdminGame.scss"
 
-function UserGame({ gameId }) {
+function AdminGame({ gameId }) {
    const [game, setGame] = useState({});
 
    useEffect(() => {
@@ -20,40 +19,28 @@ function UserGame({ gameId }) {
       }
    };
 
-   const deleteBuy = async (gameId) => {
-      try {
-         await UserService.deleteBuy(gameId);
-      } catch (error) {
-         console.log(error.message || error);
-      }
-   };
-
    return (
       <div className="">
          <div
-            className="card text-start game-card-usr"
-            style={{ width: "13rem" }}
+            className="card text-start game-card-adm"
+            style={{ width: "4rem" }}
          >
-            <div className="poster-container-usr">
+            <div className="poster-container-adm">
                <img
                   src={game.cover}
                   className="card-img-top img-fluid round"
                   alt="..."
                />
             </div>
-            <div className="card-body">
-               <h5 className="card-title mb-2 mt-2 fs-6 fw-bold">
-                  {game.name}
-               </h5>
-               <span class="badge bg-danger" type="submit" onClick={() => deleteBuy(gameId)}>Cancelar compra</span>
+            <div className="card-body-adm">
             </div>
          </div>
       </div>
    );
 }
 
-UserGame.propTypes = {
+AdminGame.propTypes = {
    gameId: PropTypes.object.isRequired,
 };
 
-export default UserGame;
+export default AdminGame;

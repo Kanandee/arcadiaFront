@@ -40,13 +40,11 @@ export default function ShoppingCart() {
    const confirmBuy = async () => {
       try {
          await UserService.confirmBuy(cartItems);
-         dispatch(clearGamesCart());
-         navigate("/profile"); 
+         dispatch(clearGamesCart()); 
       } catch (error) {
          console.log(error.message || error);
       }
    };
-
 
    if (!isLoggedIn) {
       return (
