@@ -1,6 +1,11 @@
 # Proyecto Frontend Arcadia Gaming
 <h3>Utilizaremos la API de Backend Arcadia Gaming para conectarnos al servidor y la base de datos de los juegos, a través de Axios </h3>
 
+# Vistas del proyecto
+![](/src/assets/paginaPrincipal.png)
+![](/src/assets/panelAdmin.png)
+![](/src/assets/profile.png)
+
 ```
 http://localhost:3000
 ```
