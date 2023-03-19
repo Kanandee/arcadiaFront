@@ -40,9 +40,6 @@ UserService.modifyUser = async (newData, id) => {
    const config = {
       headers: { Authorization: `Bearer ${token}` },
    };
-   console.log("Aquí el name: " + newData.name);
-   console.log("Aquí el email: " + newData.email);
-   console.log("Aquí el password: " + newData.password);
    return await axios.put(apiUrl, { name: newData.name, email: newData.email, password: newData.password }, config);
 };
 
@@ -59,7 +56,6 @@ UserService.confirmBuy = async (games) => {
 
 UserService.deleteBuy = async (gameid) => {
    const apiUrl = environment.BASE_API_URL + "/users/remove/" + gameid;
-   console.log(apiUrl)
    const token = TokenStorageService.getToken();
    const config = {
       headers: { Authorization: `Bearer ${token}` },

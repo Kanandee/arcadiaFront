@@ -32,7 +32,6 @@ export default function Login() {
 
       // verificar que no hay error
       if (Object.keys(formErrors).length == 0 && isSubmit) {
-         console.log("LOGIN...");
          loginAuth(credentials);
       }
       console.log("useEffect", formErrors);
@@ -69,7 +68,6 @@ export default function Login() {
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      console.log("submit");
       setFormErrors(validateLoginFormValues(formValues));
       console.log("handle", formErrors);
       setIsSubmit(true);

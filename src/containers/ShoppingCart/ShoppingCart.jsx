@@ -16,18 +16,7 @@ export default function ShoppingCart() {
    const dispatch = useDispatch();
 
 
-   useEffect(() => {  }, []);
-
-   // const getUserPayment = async () => {
-   //    try {
-   //       const res = await UserService.getUserInfo(id);
-   //       setPayment(res.data.results.paycard);
-   //    } catch (error) {
-   //       setPayment(null);
-   //       console.log(error.message || error);
-   //    }
-   // };
-
+   useEffect(() => { }, []);
    const clearCart = () => {
       dispatch(clearGamesCart());
       navigate('/games');
@@ -40,7 +29,7 @@ export default function ShoppingCart() {
    const confirmBuy = async () => {
       try {
          await UserService.confirmBuy(cartItems);
-         dispatch(clearGamesCart()); 
+         dispatch(clearGamesCart());
       } catch (error) {
          console.log(error.message || error);
       }

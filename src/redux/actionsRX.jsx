@@ -14,19 +14,16 @@ const actionsRX = createSlice({
     saveLoginInfo: (state, action) => {
       state.isLoggedIn = true;
       state.userInfo = action.payload;
-      console.log("saveLoginInfo: " + state.isLoggedIn + " " + state.userInfo)
     },
     clearLoginInfo: (state) => {
       state.isLoggedIn = false;
       state.userInfo = null;
-      console.log("clearLoginInfo: " + state.isLoggedIn + " " + state.userInfo)
     },
 
     addGamesCart: (state, action) => {
       // Not exists in the cart?
       if(!state.gamesCart.includes(action.payload)){
         state.gamesCart.push(action.payload);
-        console.log("addGamesCart: " + state.gamesCart)
       }
     },
 
@@ -35,12 +32,10 @@ const actionsRX = createSlice({
       if (index > -1) {
         state.gamesCart.splice(index, 1);
       }
-      console.log("removeGameCart: " + state.gamesCart)
     },
 
     clearGamesCart: (state) => {
       state.gamesCart = []
-      console.log("clearGamesCart: " + state.gamesCart)
     }
   },
 });

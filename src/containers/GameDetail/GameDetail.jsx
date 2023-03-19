@@ -24,7 +24,6 @@ export default function GameDetail() {
       try {
          const details = await GameService.getSingleGame(id);
          setGame(details.data.results);
-         console.log("Retrieving game details", details.data.results);
       } catch (error) {
          setGame(null);
          console.log(error.message || error);

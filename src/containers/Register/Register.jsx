@@ -27,7 +27,6 @@ export default function Register() {
    useEffect(() => {   
       // verificar que no hay error
       if (Object.keys(formErrors).length == 0 && isSubmit) {
-         console.log("REGISTER...");
          register(user);
       }
       console.log("useEffect", formErrors);
@@ -36,7 +35,6 @@ export default function Register() {
    const register = async (user) => {
       try {
          const res = await AuthService.register(user);
-         console.log(res.data);
          navigate("/login");
       } catch (error) {
          console.log(error);
@@ -54,7 +52,6 @@ export default function Register() {
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      console.log("submit");
       setFormErrors(validateLoginFormValues(formValues));
       console.log("handle", formErrors);
       setIsSubmit(true);

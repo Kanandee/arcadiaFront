@@ -28,7 +28,6 @@ function AdminUserInfo({ user }) {
 
       // verificar que no hay error
       if (Object.keys(formErrors).length == 0 && isSubmit) {
-         console.log("UPDATING...");
          modifyUser(newData)
       }
       console.log("useEffect", formErrors);
@@ -46,7 +45,6 @@ function AdminUserInfo({ user }) {
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      console.log("submit");
       setFormErrors(validateLoginFormValues(formValues));
       console.log("handle", formErrors);
       setIsSubmit(true);
@@ -57,11 +55,9 @@ function AdminUserInfo({ user }) {
          var retVal = confirm("¿Desea eliminar al usuario?");
          if (retVal == true) {
             await UserService.deleteUser(user._id)
-            console.log("User deleted: " + user)
             return true;
          }
          else {
-            console.log("Delete canceled: " + user)
             return false;
          }
       } catch (error) {
@@ -74,11 +70,10 @@ function AdminUserInfo({ user }) {
          var retVal = confirm("¿Deseas modificar estos datos?");
          if (retVal == true) {
             await UserService.modifyUser(newData, user._id)
-            console.log("User modified: " + user)
+
             return true;
          }
          else {
-            console.log("Modify canceled: " + user)
             return false;
          }
       } catch (error) {

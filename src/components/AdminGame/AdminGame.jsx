@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import GameService from "../../_services/GameService";
-import "./AdminGame.scss"
+import { useNavigate } from "react-router-dom";
+import "./AdminGame.scss";
 
 function AdminGame({ gameId }) {
+   const navigate = useNavigate();
+   const getGameDetails = (game) => {
+      navigate(`/games/${game.id}`);
+   };
    const [game, setGame] = useState({});
 
    useEffect(() => {
@@ -30,6 +35,7 @@ function AdminGame({ gameId }) {
                   src={game.cover}
                   className="card-img-top img-fluid round"
                   alt="..."
+                  onClick={() => getGameDetails(game)}
                />
             </div>
             <div className="card-body-adm">

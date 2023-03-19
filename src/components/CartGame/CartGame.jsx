@@ -24,7 +24,6 @@ function CartGame({ gameId }) {
 
    const deleteItemCart = async (gameId) => {
       dispatch(removeGameCart(gameId));
-      console.log("Item removed: " + gameId)
    };
 
    return (
