@@ -94,7 +94,7 @@ export default function Navbar() {
    }
 
    const showCartButton = () => {
-      if(isLoggedIn && cartItems.length>0){
+      if(isLoggedIn){
          return( <li className="nav-item">
          <NavLink to="/cart" className={setNavLinkClassName}>
          🛒

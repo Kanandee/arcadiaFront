@@ -36,11 +36,10 @@ function AdminUserInfo({ user }) {
 
    // handlers update
    const handleChange = (e) => {
-      const { name, value, password, value2 } = e.target;
+      const { name, value } = e.target;
       setFormValues({
          ...formValues,
          [name]: value,
-         [password]: value2,
 
       });
    };
@@ -120,19 +119,6 @@ function AdminUserInfo({ user }) {
                            />
                            <div className="form-text form-text-error">
                               {formErrors.name}
-                           </div>
-                        </div>
-                        <div className="mb-3">
-                           <input
-                              type="email"
-                              placeholder={user.email}
-                              name="email"
-                              className="form-control"
-                              value={formValues.email}
-                              onChange={handleChange}
-                           />
-                           <div className="form-text form-text-error">
-                              {formErrors.email}
                            </div>
                         </div>
                         <div className="mb-3">
