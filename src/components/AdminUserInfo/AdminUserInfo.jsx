@@ -9,8 +9,8 @@ function AdminUserInfo({ user }) {
    const id = TokenStorageService.getUser();
 
    const initialValues = {
-      email: "",
-      name: "",
+      password: "",
+      name: ""
    };
 
    const [formValues, setFormValues] = useState(initialValues);
@@ -18,8 +18,10 @@ function AdminUserInfo({ user }) {
    const [isSubmit, setIsSubmit] = useState(false);
 
    const newData = {
-      email: formValues.email,
       name: formValues.name,
+      email: formValues.email,
+      password: formValues.password
+
    };
 
    useEffect(() => {
@@ -34,10 +36,12 @@ function AdminUserInfo({ user }) {
 
    // handlers update
    const handleChange = (e) => {
-      const { name, value } = e.target;
+      const { name, value, password, value2 } = e.target;
       setFormValues({
          ...formValues,
          [name]: value,
+         [password]: value2,
+
       });
    };
 
@@ -104,47 +108,61 @@ function AdminUserInfo({ user }) {
                <div class="fw-bold">👤 {user.role}</div>
                <div class="input-group mb-1">
                   <div class="input-group-prepend">
+                     <form className="text-start" noValidate onSubmit={handleSubmit}>
+                        <div className="mb-3">
+                           <input
+                              type="name"
+                              placeholder={user.name}
+                              name="name"
+                              className="form-control"
+                              value={formValues.name}
+                              onChange={handleChange}
+                           />
+                           <div className="form-text form-text-error">
+                              {formErrors.name}
+                           </div>
+                        </div>
+                        <div className="mb-3">
+                           <input
+                              type="email"
+                              placeholder={user.email}
+                              name="email"
+                              className="form-control"
+                              value={formValues.email}
+                              onChange={handleChange}
+                           />
+                           <div className="form-text form-text-error">
+                              {formErrors.email}
+                           </div>
+                        </div>
+                        <div className="mb-3">
+                           <input
+                              type="password"
+                              placeholder={user.password}
+                              name="password"
+                              className="form-control"
+                              value={formValues.password}
+                              onChange={handleChange}
+                           />
+                           <div className="form-text form-text-error">
+                              {formErrors.password}
+                           </div>
+                        </div>
+                        <div className="d-grid gap-2">
+                           <button type="submit" onClick={() => modifyUser(newData)}
+                              className="badge bg-success rounded-pill"
+                           >
+                              Modificar
+                           </button>
+                           <button type="button" onClick={() => deleteUser(user)}
+                              className="badge bg-danger rounded-pill"
+                           >
+                              Eliminar
+                           </button>
+                        </div>
+
+                     </form>
                   </div>
-                  <form className="text-start" noValidate onSubmit={handleSubmit}>
-                     <div className="mb-3">
-                        <input
-                           type="name"
-                           placeholder={user.name}
-                           name="name"
-                           className="form-control"
-                           value={formValues.name}
-                           onChange={handleChange}
-                        />
-                        <div className="form-text form-text-error">
-                           {formErrors.name}
-                        </div>
-                     </div>
-                     <div className="mb-3">
-                        <input
-                           type="email"
-                           placeholder={user.email}
-                           name="email"
-                           className="form-control"
-                           value={formValues.email}
-                           onChange={handleChange}
-                        />
-                        <div className="form-text form-text-error">
-                           {formErrors.email}
-                        </div>
-                     </div>
-                     <div className="d-grid gap-2">
-                        <button type="submit" onClick={() => modifyUser(newData)}
-                           className="badge bg-success rounded-pill"
-                        >
-                           Modificar
-                        </button>
-                        <button type="button" onClick={() => deleteUser(user)}
-                           className="badge bg-danger rounded-pill"
-                        >
-                           Eliminar
-                        </button>
-                     </div>
-                  </form>
                </div>
                {showGamesUser(user)}
                <br></br>

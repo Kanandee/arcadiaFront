@@ -18,15 +18,7 @@ export const validateLoginFormValues = (formValues) => {
    } else if (!namePattern.test(formValues.name)) {
       errors.name = "Formato de nombre no válido.";
    }
-
-    //paycard
-    if (!formValues.paycard) {
-      errors.paycard = "Se necesita una tarjeta bancaria.";
-   } else if (!paycardPattern.test(formValues.paycard)) {
-      errors.paycard = "Formato de tarjeta bancaria no válido.";
-   }
-
-   //password
+    //password
    if (!formValues.password) {
       errors.password = "Se requiere una contraseña.";
    } else if (formValues.password.length < 6) {
